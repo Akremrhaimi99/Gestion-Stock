@@ -35,5 +35,3 @@ class Commande(models.Model):
 
     def __str__(self):
         return(self.produit.nom_prod)
-class test(models.model):
-    code_test = models.IntegerField()
