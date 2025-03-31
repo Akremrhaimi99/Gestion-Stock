@@ -1,0 +1,129 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap1.min.css'%}">
+    <!-- Custom Styles -->
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+
+      /* Navbar */
+      .navbar {
+        background-color: #000; /* Noir */
+        padding: 1rem;
+      }
+      .navbar-brand {
+        color: #FFD700 !important; /* Jaune */
+        font-weight: bold;
+        font-size: 2rem;
+        padding-left: 0;
+      }
+      .navbar-nav .nav-link {
+        color: #fff !important; /* Blanc */
+        font-size: 1.2rem;
+        margin-left: 15px;
+      }
+      .navbar-nav {
+        margin-left: auto; /* Décale le menu à droite */
+      }
+
+      /* Background */
+      .bg {
+        background-image: url('{% static 'images/bg_1.jpg'%}');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center; /* Centre tout horizontalement */
+        align-items: center;
+      }
+
+      /* Form Block */
+      .form-block {
+        width: 80%; /* Agrandir le formulaire */
+        max-width: 600px; /* Taille maximale du formulaire */
+        padding: 3rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        font-size: 1.2rem;
+      }
+
+      .form-block h3 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .form-control {
+        font-size: 1.2rem;
+        padding: 1.25rem 1.5rem;
+      }
+
+      .btn-primary {
+        font-size: 1.2rem;
+        padding: 1rem 2rem;
+      }
+    </style>
+    <title>Stock It</title>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'home' %}">Stock It</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto"> <!-- Alignement à droite -->
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+            
+            <li class="nav-item"><a class="nav-link" href="{% url 'signin' %}">Signin</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="bg" style="margin-top:50px">
+      <div class="form-block">
+        <div class="text-center mb-5">
+          <h3>Register</h3>
+        </div>
+        <form action="{% url 'signup' %}" method="post">
+         {% csrf_token %}
+          <div class="form-group first">
+            <label for="name">Username</label>
+            <input type="text" class="form-control" placeholder="Username" id="name" name="username">
+          </div>
+          <div class="form-group first">
+            <label for="username">Email Address</label>
+            <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username" name="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" placeholder="Your Password" id="password" name="password">
+          </div>
+
+          <div class="d-sm-flex mb-5 align-items-center">
+            <span class="ml-auto"><a href="{% url 'signin' %}" class="forgot-pass">Have an account? Signin</a></span> 
+          </div>
+
+          <input type="submit" value="Register" class="btn btn-block btn-primary">
+        </form>
+      </div>
+    </div>
+
+   
+  </body>
+</html>

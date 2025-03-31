@@ -1,0 +1,130 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #f4f4f9;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+header {
+    position: fixed; /* Fixe la navbar en haut */
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%; /* Utilise toute la largeur de l'écran */
+    background-color: #04284d; /* Même couleur que la sidebar */
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000; /* S'assure qu'elle est visible au-dessus des autres éléments */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ajoute une ombre légère */
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+nav {
+    margin-left: auto; /* Place le nav à l'extrémité droite */
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: flex-end; /* Positionne les éléments à droite */
+    position: relative;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+
+header a {
+color: #fff;
+text-decoration: none;
+border-style: solid;
+border-width: 1px;
+border-color: #fff;
+padding: 10px 20px;
+}
+
+/* Barre latérale */
+
+
+/* Contenu principal */
+.main-content {
+    margin-left: 270px;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Formulaire et cartes */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #04284d;
+}
+
+.form-control-sm {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Boutons personnalisés */
+.btn-primary {
+    background-color: #0073e6;
+    border-color: #0073e6;
+    border-radius: 20px;
+    transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+
+.p{
+    color: #04284d; 
+}

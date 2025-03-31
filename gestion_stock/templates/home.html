@@ -1,0 +1,225 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Stock It</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <style>
+    body, html {
+        height: 100%;
+        margin: 0;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 1rem;
+    }
+    .navbar-brand {
+    color: #FFD700 !important; /* Jaune */
+    font-weight: bold;
+    font-size: 3rem;
+    display: inline-block; /* Garde le texte sur une seule ligne */
+    margin-bottom: 0; /* Supprime l'espace en dessous */
+    margin-left:4rem;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    text-decoration: none; /* Supprime tout soulignement ou ligne */
+    border-bottom: none; /* Supprime toute bordure sous l'élément */
+}
+
+
+    .navbar-nav {
+        list-style-type: none; /* Enlever les puces */
+        padding-left: 0; /* Enlever le padding par défaut */
+        margin-left: auto;
+    }
+    .navbar-nav .nav-item {
+        display: inline-block; /* Pour les aligner horizontalement */
+        margin-left: 20px; /* Espacement entre les éléments */
+    }
+    .navbar-nav .nav-link {
+        color: #fff !important; /* Blanc */
+        font-size: 1.75rem;
+        text-decoration: none; /* Enlever les soulignements */
+        border: none; /* Enlever la ligne sous les liens */
+    }
+    .navbar-nav .nav-link:hover {
+    color: #cccc00 !important; /* Jaune au survol */
+   /* Soulignement au survol */
+}
+
+    .navbar-collapse {
+        display: flex;
+        justify-content: flex-end; /* Aligne les éléments de menu à droite */
+        width: 100%;
+    }
+   
+    </style>
+
+</head>
+<body id="page-top">
+
+    <!-- Navigation-->
+    <div style="background-image: url('{% static 'images/header-bg.jpg' %}'); background-size: cover;">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <!-- Logo à gauche en jaune -->
+                <a class="navbar-brand" href="{% url 'home' %}">Stock It</a>
+                <!-- Menu à droite en blanc -->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'produit_view' %}">Produit</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'commande_view' %}">Commande</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="{% url 'profil' %}">{{ user.username }}</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>
+                        {% else %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'signin' %}">Signin</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Masthead-->
+        <header class="masthead" style="margin-top:18rem; text-align: center; padding: 100px 0; color: white; ">
+            <div class="container">
+                <div class="masthead-subheading" style="font-size: 4rem; padding-top:6px">Welcome To Stock It!</div>
+                <div class="masthead-heading text-uppercase" style="font-size: 2rem; padding-top:5px ">It's Nice To Meet You</div>
+            </div>
+        </header>
+    </div>
+
+    <!-- About Section-->
+    <section class="page-section" id="about" style="text-align: center; padding: 50px 0; background-color: white;">
+        <div style="margin-top:5rem;">
+            <h2 style="font-size: 2.5rem;  margin-bottom: 50px;">About</h2>
+            <p style="font-size: 1.5rem; max-width: 800px; margin: 0 auto; margin-bottom: 80px;">Je me présente : Akrem Rhaimi, étudiant en 2ème année cycle ingénieur à iTeam University. Ce projet est pour la validation de python.</p>
+        </div>
+    </section>
+
+    <!-- Team Section-->
+    <!-- Team Section-->
+<section class="page-section bg-light" id="team" style="padding: 50px 0; background-color: #e9ecef;">
+    <div class="container">
+        <div class="text-center" style="margin-bottom: 40px;">
+            <h2 class="section-heading text-uppercase" style="text-align: center; font-size: 2.5rem; margin-top:5px">The Team</h2>
+        </div>
+        <div class="row justify-content-center" >
+            <div class="col-lg-4" style="text-align: center;">
+                <div class="team-member" style="padding-top:7px;">
+                    <!-- Photo circulaire avec bordure -->
+                    <img class="rounded-circle mx-auto" src="{% static 'images/0.jpg' %}" alt="Akrem Rhaimi" 
+                        style="
+                            width: 200px; 
+                            height: 200px; 
+                            object-fit: cover; 
+                            border-radius: 50%; 
+                            border: 5px solid #d3d3d3; 
+                            margin-bottom: 20px;">
+                    <!-- Texte centré -->
+                    <h4 style="font-size: 1.8rem; margin-bottom: 10px;">Akrem Rhaimi</h4>
+                    <p class="text-muted" style="font-size: 1.2rem; margin-bottom: 20px;">Software Engineering</p>
+                    <!-- Boutons sociaux circulaires -->
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/akrem.rhaimi" 
+                           aria-label="Akrem Facebook Profile" 
+                           style="
+                               display: inline-flex; 
+                               align-items: center; 
+                               justify-content: center; 
+                               width: 50px; 
+                               height: 50px; 
+                               border-radius: 50%; 
+                               background-color: #343a40; 
+                               color: white; 
+                               font-size: 1.5rem; 
+                               margin: 5px;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/akrem-rhaimi-5823a6220/" 
+                           aria-label="LinkedIn Profile" 
+                           style="
+                               display: inline-flex; 
+                               align-items: center; 
+                               justify-content: center; 
+                               width: 50px; 
+                               height: 50px; 
+                               border-radius: 50%; 
+                               background-color: #343a40; 
+                               color: white; 
+                               font-size: 1.5rem; 
+                               margin: 5px;">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Footer-->
+    <footer class="footer py-4" style="background-color: #343a40; color: white; padding: 20px 0;">
+    <div class="container">
+        <div class="row align-items-center" style="display:flex">
+            <!-- Texte à gauche -->
+            <div class="col-lg-4 text-lg-start" style="text-align: left; font-size: 1.2rem; padding-right:30%; padding-top:10px">
+                Copyright &copy; Akrem Rhaimi 2025
+            </div>
+            <!-- Icônes sociales au centre -->
+            <div class="col-lg-4 my-3 my-lg-0 text-center">
+                <a href="https://www.facebook.com/akrem.rhaimi/" 
+                   aria-label="Facebook" 
+                   style="
+                       display: inline-flex; 
+                       align-items: center; 
+                       justify-content: center; 
+                       width: 40px; 
+                       height: 40px; 
+                       border-radius: 50%; 
+                       background-color: #ffffff; 
+                       color: #343a40; 
+                       font-size: 1.2rem; 
+                       margin: 5px;">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/akrem-rhaimi-5823a6220/" 
+                   aria-label="LinkedIn" 
+                   style="
+                       display: inline-flex; 
+                       align-items: center; 
+                       justify-content: center; 
+                       width: 40px; 
+                       height: 40px; 
+                       border-radius: 50%; 
+                       background-color: #ffffff; 
+                       color: #343a40; 
+                       font-size: 1.2rem; 
+                       margin: 5px;">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+            <!-- Colonne vide pour équilibrer -->
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="{% static 'css/style3.css'%}" rel="stylesheet">
+  
+    <style>
+   .navbar {
+        padding: 1rem;
+    }
+    .navbar-brand {
+    color: #FFD700 !important; /* Jaune */
+    font-weight: bold;
+    font-size: 3rem;
+    display: inline-block; /* Garde le texte sur une seule ligne */
+    margin-bottom: 0; /* Supprime l'espace en dessous */
+    margin-left:4rem;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    text-decoration: none; /* Supprime tout soulignement ou ligne */
+    border-bottom: none; /* Supprime toute bordure sous l'élément */
+}
+
+
+    .navbar-nav {
+        list-style-type: none; /* Enlever les puces */
+        padding-left: 0; /* Enlever le padding par défaut */
+        margin-left: auto;
+    }
+    .navbar-nav .nav-item {
+        display: inline-block; /* Pour les aligner horizontalement */
+        margin-left: 10px; /* Espacement entre les éléments */
+    }
+    .navbar-nav .nav-link {
+        color: #fff !important; /* Blanc */
+        font-size: 1.3rem;
+        text-decoration: none; /* Enlever les soulignements */
+        border: none; /* Enlever la ligne sous les liens */
+    }
+    .navbar-nav .nav-link:hover {
+    color: #cccc00 !important; /* Jaune au survol */
+   /* Soulignement au survol */
+}
+
+    .navbar-collapse {
+        display: flex;
+        justify-content: flex-end; /* Aligne les éléments de menu à droite */
+        width: 100%;
+    }
+   </style>
+   <title>Stock It</title>
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:black">
+            <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                <!-- Logo à gauche en jaune -->
+                <a class="navbar-brand" href="{% url 'home' %}">Stock It</a>
+                <!-- Menu à droite en blanc -->
+                <div class="collapse navbar-collapse" id="navbarResponsive" style="margin-left: 10px;">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Accueil</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'produit_view' %}">Produit</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'commande_view' %}">Commande</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="{% url 'profil' %}">{{ user.username }}</a></li>
+                            <li class="nav-item"><a  class="nav-link" href="{% url 'logout' %}">Déconnexion</a></li>                            
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    <br><br>
+
+
+    
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <h2 class="text-center mb-4">Gérer Mes Produit</h2>
+            <div class="row">
+                <!-- Formulaire Ajouter une Enchère -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                        <div class="container mt-5">
+                            <h2 class="text-center mb-4">Modifier le Produit</h2>
+                            <form method="post" enctype="multipart/form-data" class="shadow p-4 bg-white rounded">
+                                {% csrf_token %}
+                                <div class="form-group mb-3">
+                                    <label for="nom_prod" class="form-label">Code :</label>
+                                    <input 
+                                        type="text" 
+                                        name="code_prod" 
+                                        id="code_prod" 
+                                        class="form-control" 
+                                        value="{{ commande.code_commande }}" 
+                                        required>
+                                </div>
+
+
+                                <div class="form-group mb-3">
+                                    <label for="quantit_cmde" class="form-label">Quantité :</label>
+                                    <input 
+                                        type="number" 
+                                        name="quantit_cmde" 
+                                        id="quantit_cmde" 
+                                        class="form-control" 
+                                        value="{{ commande.quantit_cmde }}" 
+                                        required>
+                                </div>
+
+                                <div class="form-group mb-3">
+                                    <label for="Date" class="form-label" >Date:</label>
+                                    <input 
+                                        type="datetime-local"
+                                        class="form-control form-control-sm"
+                                        id="date_cmd" placeholder="Date"
+                                        name="date"
+                                        required>
+                                    
+                                </div>
+
+                                <div class="form-group mb-4">
+                                <label for="produit" class="form-label" >Produit: </label>
+                                    <select class="form-control form-control-sm" id="produit"  name="produit">
+                                {% for produit in produits%} 
+                                <option value="{{produit.id}}">{{produit.nom_prod}}</option>  
+                                {% endfor %} 
+                                </select>                
+                                
+                                </div>
+
+                                <div class="d-flex justify-content-between">
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <a href="{% url 'commande_view' %}" class="btn btn-secondary">Annuler</a>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+        </div>
+    </div>
+
+    
+   
+</body>
+</html>

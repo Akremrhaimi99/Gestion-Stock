@@ -1,0 +1,120 @@
+/* Global body styles */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    background-color: #f4f4f9;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* Header and navbar */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: #04284d;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation links */
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Forcer la couleur jaune au survol sans background bleu */
+nav ul li a:hover {
+    color: #cccc00 !important; /* Jaune au survol */
+    background-color: transparent !important; /* Enlève le fond bleu */
+    text-decoration: none !important; /* Enlève tout soulignement */
+}
+
+/* Sidebar styles */
+.sidebar {
+    height: 100vh;
+    position: fixed;
+    background-color: #04284d;
+    color: white;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Forcer la suppression du fond bleu au survol des éléments de la sidebar */
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    transition: background 0.3s, transform 0.2s;
+}
+
+/* Sidebar links hover */
+.sidebar a:hover {
+    transform: translateX(5px);
+    background-color: transparent !important; /* Enlève le fond bleu */
+    color: #cccc00 !important; /* Jaune au survol */
+    text-decoration: none !important; /* Enlève le soulignement */
+}
+
+/* Main content styles */
+.main-content {
+    margin-left: 270px;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+/* Custom buttons styles */
+.btn-primary {
+    background-color: #0073e6;
+    border-color: #0073e6;
+    border-radius: 20px;
+    transition: background-color 0.3s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #0073e6;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button for warning */
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+/* Danger button */
+.btn-danger {
+    background-color: #e63946;
+    color: white;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+
+.btn-danger:hover {
+    background-color: #c72535;
+}
+
+.p {
+    color: #04284d;
+}
